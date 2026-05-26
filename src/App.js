@@ -1,7 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import MenuBar from "./components/MenuBar";
 import Footer from "./components/Footer";
 import Viewer from "./pages/Viewer";
+
+function UserGamesRoute() {
+    const { userName } = useParams();
+    return <Viewer userName={userName} />;
+}
 
 function App() {
     return (
@@ -10,6 +15,7 @@ function App() {
                 <MenuBar />
                 <Routes>
                     <Route path="/bingo-board-repo" element={<Viewer />} />
+                    <Route path="/bingo-board-repo/user/:userName" element={<UserGamesRoute />} />
                 </Routes>
                 <Footer />
             </div>
