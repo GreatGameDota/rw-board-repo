@@ -249,6 +249,7 @@ class BingoCanvas extends Component {
                         boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
                     }}
                 />
+                {this.state.fontsLoaded ? <span /> : <span>loading fonts</span>}
             </div>
         );
     }

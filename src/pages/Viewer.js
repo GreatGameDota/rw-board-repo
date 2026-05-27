@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { atlases } from '../lib/bingovista/bingovista';
-import BingoCanvas from '../components/BingoCanvas';
+import BoardCard from '../components/BoardCard';
 
 class Viewer extends Component {
     constructor(props) {
@@ -80,7 +80,7 @@ class Viewer extends Component {
         const min = page * 10;
         const max = min + 10;
         try {
-            const response = await fetch(`https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards?min=${min}&max=${max}`);
+            const response = await fetch(`https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards`);
             if (!response.ok) {
                 throw new Error(`API error: ${response.status}`);
             }
@@ -171,18 +171,6 @@ class Viewer extends Component {
     render() {
         const { boards, total, loading, error } = this.state;
 
-        const CHARACTER_TO_NAME = new Map();
-        CHARACTER_TO_NAME.set("White", "Survior");
-        CHARACTER_TO_NAME.set("Yellow", "Monk");
-        CHARACTER_TO_NAME.set("Red", "Hunter");
-        CHARACTER_TO_NAME.set("Gourmand", "Gourmand");
-        CHARACTER_TO_NAME.set("Saint", "Saint");
-        CHARACTER_TO_NAME.set("Spear", "Spearmaster");
-        CHARACTER_TO_NAME.set("Rivulet", "Rivulet");
-        CHARACTER_TO_NAME.set("Artificer", "Artificer");
-        CHARACTER_TO_NAME.set("Sofanthiel", "Inv");
-        CHARACTER_TO_NAME.set("Watcher", "Watcher");
-
         return (
             <div className="flex-grow">
                 <div className="w-full h-32 overflow-hidden">
@@ -210,30 +198,13 @@ class Viewer extends Component {
                         </div>
                     ) : (
                         <div>
-                            {this.renderPagination()}
+                            {/* {this.renderPagination()} */}
                             <div className="flex flex-col gap-6">
                                 {boards.map((board, index) => {
-                                    return (
-                                        <div key={index} className="flex flex-row items-center">
-                                            <div className="flex flex-col w-1/3 text-center">
-                                                <p className="" style={{ fontFamily: "RainWorldRodondo", fontSize: "64px" }}>{this.getGameValue(board, 'title')}</p>
-                                                <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>by {this.getGameValue(board, "author")}</p>
-                                                <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(this.getGameValue(board, "boardString").split(";")[0])} board</p>
-                                                <span style={{ border: "solid", borderWidth: "1px 0 0 0", borderColor: "#52525c", margin: "4px 0" }}></span>
-                                                <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p>
-                                                <p key={index} style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{this.getGameValue(board, 'playtesters').map((name, index) => name.stringValue).join(', ')}</p>
-                                            </div>
-                                            <div className="w-fit mx-auto">
-                                                <BingoCanvas
-                                                    bingoString={this.getGameValue(board, "boardString")}
-                                                    boardState={"000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000<>000000000".split("<>")}
-                                                    team={0}
-                                                    size={500} />
-                                            </div>
-                                        </div>);
+                                    return <BoardCard key={index} board={board} />;
                                 })}
                             </div>
-                            {this.renderPagination()}
+                            {/* {this.renderPagination()} */}
                         </div>
                     )}
                 </div>

@@ -1,7 +1,7 @@
 
 Clone
 
-> git clone --recurse-submodules https://github.com/GreatGameDota/rw-bingo-board-viewer.git
+> git clone --recurse-submodules https://github.com/GreatGameDota/bingo-board-repo.git
 
 Run locally
 
