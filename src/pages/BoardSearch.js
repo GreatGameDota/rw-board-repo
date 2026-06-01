@@ -245,13 +245,13 @@ class BoardSearch extends Component {
 
                     <div className="mb-8 bg-gray-800 border border-gray-700 rounded-lg p-6">
                         <div className="flex flex-col">
-                            <label className="mb-3">Filter by Character</label>
+                            <label className="mb-3">Filter by Slugcat</label>
                             <select
                                 value={selectedCharacter}
                                 onChange={this.handleCharacterChange}
                                 className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg"
                             >
-                                <option value="">-- All Characters --</option>
+                                <option value="">-- All Slugcats --</option>
                                 {characters.map((char) => (
                                     <option key={char} value={char}>
                                         {char}
