@@ -3,3 +3,4 @@ node_modules
 game_logs/*
 package-lock.json
 build/
+src/pages/AddBoard.js

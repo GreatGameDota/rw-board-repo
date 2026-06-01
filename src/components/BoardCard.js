@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BingoCanvas from '../components/BingoCanvas';
 
 const CHARACTER_TO_NAME = new Map();
-CHARACTER_TO_NAME.set("White", "Survior");
+CHARACTER_TO_NAME.set("White", "Survivor");
 CHARACTER_TO_NAME.set("Yellow", "Monk");
 CHARACTER_TO_NAME.set("Red", "Hunter");
 CHARACTER_TO_NAME.set("Gourmand", "Gourmand");
@@ -86,8 +86,8 @@ class BoardCard extends Component {
     render() {
         const { board } = this.props;
         return (
-            <div className="flex flex-row items-center">
-                <div className="flex flex-col w-1/2 text-center">
+            <div className="flex flex-row items-center bg-gray-800 rounded-lg p-2 border border-gray-700">
+                <div className="flex flex-col mb-4 w-1/2 text-center">
                     <p className="" style={{ fontFamily: "RainWorldRodondo", fontSize: "64px" }}>{this.getGameValue(board, 'title')}</p>
                     <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>by {this.getGameValue(board, "author")}</p>
                     <div className="flex flex-row mx-auto w-fit">
@@ -95,14 +95,14 @@ class BoardCard extends Component {
                             alt="Board cat icon"
                             className="w-8 h-8 my-auto mr-4"
                             title={`${CHARACTER_TO_NAME.get(this.getGameValue(board, "boardString").split(";")[0])} board`} />
-                        <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(this.getGameValue(board, "boardString").split(";")[0])} board</p>
+                        <p className="mb-2" style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(this.getGameValue(board, "boardString").split(";")[0])} board</p>
                     </div>
                     <span style={{ border: "solid", borderWidth: "1px 0 0 0", borderColor: "#52525c", margin: "4px 0" }}></span>
                     <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p>
                     <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{this.getGameValue(board, 'playtesters').map((name, index) => name.stringValue).join(', ')}</p>
                     <button
                         onClick={() => navigator.clipboard.writeText(this.getGameValue(board, "boardString"))}
-                        className={`p-2 my-8 mx-auto flex flex-row w-fit text-gray-400 rounded hover:bg-gray-700 transition-colors`}
+                        className={`p-2 px-4 my-8 mx-auto flex flex-row w-fit text-gray-400 rounded hover:bg-gray-700 transition-colors border border-gray-700`}
                         style={{ fontFamily: "RainWorldRodondo", fontSize: "24px" }}
                     >
                         Copy Board String
@@ -111,17 +111,17 @@ class BoardCard extends Component {
                         </svg>
                     </button>
                     <button
-                        className={`group flex mx-auto rounded-lg overflow-hidden disabled:cursor-not-allowed`}
+                        className={`group flex mx-auto rounded-lg overflow-hidden disabled:cursor-not-allowed border border-gray-700`}
                         onClick={() => this.updateBoard(this.getGameValue(board, "id"))}
                         style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}
                         disabled={this.state.loading}
                         title={this.state.used ? "Board used" : "Board not used"}
                     >
-                        <div className="flex items-center pb-2 px-4 bg-gray-700 group-disabled:bg-gray-900 text-white transition-colors duration-150 select-none">
+                        <div className="flex items-center pb-2 px-4 bg-gray-700 group-disabled:bg-gray-900 text-white transition-colors duration-150">
                             Board Used
                         </div>
 
-                        <div className="flex items-center justify-center w-[42px] min-h-full bg-gray-800 border-l border-white/10 transition-colors duration-150">
+                        <div className="flex items-center justify-center w-[48px] min-h-full bg-gray-800">
                             {this.state.used ?
                                 <svg width="24" height="24" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />

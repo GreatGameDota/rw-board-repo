@@ -33,6 +33,22 @@ const MenuBar = () => {
                                 All Boards
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to="/bingo-board-repo/board-search"
+                                className="text-gray-300 hover:text-white transition-colors duration-200"
+                            >
+                                Board Search
+                            </Link>
+                        </li>
+                        {/* <li>
+                            <Link
+                                to="/bingo-board-repo/add-board"
+                                className="text-gray-300 hover:text-white transition-colors duration-200"
+                            >
+                                Add Board
+                            </Link>
+                        </li> */}
                     </ul>
                     <form onSubmit={handleSearchSubmit} className="hidden md:block ml-auto relative">
                         <svg
