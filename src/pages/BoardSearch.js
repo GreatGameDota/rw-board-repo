@@ -131,10 +131,32 @@ class BoardSearch extends Component {
         return v;
     };
 
+    calcUsage = () => {
+        const usage = new Map();
+        for (var board of this.state.boards) {
+            const creator = this.getGameValue(board, 'author') || 'Unknown';
+            const used = this.getGameValue(board, 'used') ? 1 : 0;
+
+            if (!usage.has(creator))
+                usage.set(creator, { used: 0, total: 0 });
+            const stats = usage.get(creator);
+            stats.total += 1;
+            stats.used += used;
+            usage.set(creator, stats);
+        }
+        return usage;
+    };
+
     getFilteredBoards = () => {
         const { boards, selectedCharacter, player1, player2, player3, player4 } = this.state;
 
-        return boards.filter(board => {
+        var m = boards.length, i;
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+            [boards[m], boards[i]] = [boards[i], boards[m]];
+        }
+
+        let filtered = boards.filter(board => {
             if (this.getGameValue(board, 'used'))
                 return false;
 
@@ -156,6 +178,33 @@ class BoardSearch extends Component {
 
             return true;
         });
+
+        const creatorUsage = this.calcUsage();
+        let maxUsed = 0;
+        creatorUsage.forEach(stats => {
+            if (stats.used > maxUsed)
+                maxUsed = stats.used;
+        });
+
+        const result = [];
+        const remaining = filtered.map((item, i) => ({
+            item,
+            weight: ((maxUsed - (creatorUsage.get(this.getGameValue(item, 'author') || 'Unknown').used)) + 1) * 5
+        }));
+        while (remaining.length > 0) {
+            const totalWeight = remaining.reduce((sum, e) => sum + e.weight, 0);
+            let r = Math.random() * totalWeight;
+
+            const idx = remaining.findIndex(e => {
+                r -= e.weight;
+                return r <= 0;
+            });
+
+            result.push(remaining[idx].item);
+            remaining.splice(idx, 1);
+        }
+
+        return result;
     };
 
     render() {

@@ -89,7 +89,7 @@ class BoardCard extends Component {
             <div className="flex flex-row items-center bg-gray-800 rounded-lg p-2 border border-gray-700">
                 <div className="flex flex-col mb-4 w-1/2 text-center">
                     <p className="" style={{ fontFamily: "RainWorldRodondo", fontSize: "64px" }}>{this.getGameValue(board, 'title')}</p>
-                    <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>by {this.getGameValue(board, "author")}</p>
+                    <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>by ???</p>
                     <div className="flex flex-row mx-auto w-fit">
                         <img src={`${CHARACTER_TO_IMG.get(this.getGameValue(board, "boardString").split(";")[0])}`}
                             alt="Board cat icon"
@@ -98,8 +98,8 @@ class BoardCard extends Component {
                         <p className="mb-2" style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(this.getGameValue(board, "boardString").split(";")[0])} board</p>
                     </div>
                     <span style={{ border: "solid", borderWidth: "1px 0 0 0", borderColor: "#52525c", margin: "4px 0" }}></span>
-                    <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p>
-                    <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{this.getGameValue(board, 'playtesters').map((name, index) => name.stringValue).join(', ')}</p>
+                    {/* <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p> */}
+                    {/* <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{this.getGameValue(board, 'playtesters').map((name, index) => name.stringValue).join(', ')}</p> */}
                     <button
                         onClick={() => navigator.clipboard.writeText(this.getGameValue(board, "boardString"))}
                         className={`p-2 px-4 my-8 mx-auto flex flex-row w-fit text-gray-400 rounded hover:bg-gray-700 transition-colors border border-gray-700`}
