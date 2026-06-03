@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="max-w-full mx-auto px-6 py-6">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="text-gray-400 text-sm mb-4 md:mb-0">
-                        <p>&copy; {new Date().getFullYear()} GreatGameDota</p>
+                        <p style={{ fontFamily: 'rainworldMenu', fontSize: '16px' }}>&copy; {new Date().getFullYear()} GreatGameDota</p>
                     </div>
                     <div className="text-gray-400 text-sm">
                         <p>

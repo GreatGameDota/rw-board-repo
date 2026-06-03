@@ -41,6 +41,14 @@ const MenuBar = () => {
                                 Board Search
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                to="/bingo-board-repo/fake-boards"
+                                className="text-gray-300 hover:text-white transition-colors duration-200"
+                            >
+                                Fake Boards
+                            </Link>
+                        </li>
                         {/* <li>
                             <Link
                                 to="/bingo-board-repo/add-board"
