@@ -80,29 +80,20 @@ class BoardCard extends Component {
     }
 
     componentDidMount() {
-        const { board } = this.props;
-        const boardString = this.getGameValue(board, "boardString");
-        const currentCharacter = boardString.split(";")[0];
         this.setState({
-            used: this.getGameValue(board, "used"),
-            selectedCharacter: currentCharacter
+            used: this.getGameValue(this.props.board, "used"),
         });
     }
 
-    handleCharacterChange = (e) => {
-        this.setState({ selectedCharacter: e.target.value });
-    }
-
     getModifiedBoardString = () => {
-        const { board } = this.props;
-        const { selectedCharacter } = this.state;
-        const boardString = this.getGameValue(board, "boardString");
+        const boardString = this.getGameValue(this.props.board, "boardString");
         const parts = boardString.split(";");
-        parts[0] = selectedCharacter;
+        parts[0] = "Any";
         if (parts.length === 2)
             parts.splice(1, 0, "random");
         if (parts.length === 3)
             parts.splice(1, 0, "1");
+        parts[2] = "random";
         return parts.join(";");
     }
 
@@ -115,32 +106,13 @@ class BoardCard extends Component {
                 <div className="flex flex-col mb-4 w-1/2 text-center">
                     <p className="" style={{ fontFamily: "RainWorldRodondo", fontSize: "64px" }}>{this.getGameValue(board, 'title')}</p>
                     <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>by {fake ? this.getGameValue(board, "author") : "???"}</p>
-                    {fake && (
-                        <div className="my-4">
-                            <label style={{ fontFamily: "RainWorldRodondo", fontSize: "24px" }} className="mr-3">
-                                Character:
-                            </label>
-                            <select
-                                value={this.state.selectedCharacter}
-                                onChange={this.handleCharacterChange}
-                                className="px-3 py-2 rounded bg-gray-700 border border-gray-600"
-                                style={{ fontFamily: "Segoe UI", fontSize: "16px" }}
-                            >
-                                {Array.from(CHARACTER_TO_NAME.keys()).map((key) => (
-                                    <option key={key} value={key}>
-                                        {CHARACTER_TO_NAME.get(key)}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    )}
-                    <div className="flex flex-row mx-auto w-fit">
+                    {!fake && <div className="flex flex-row mx-auto w-fit">
                         <img src={`${CHARACTER_TO_IMG.get(displayBoardString.split(";")[0])}`}
                             alt="Board cat icon"
                             className="w-8 h-8 my-auto mr-4"
                             title={`${CHARACTER_TO_NAME.get(displayBoardString.split(";")[0])} board`} />
                         <p className="mb-2" style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(displayBoardString.split(";")[0])} board</p>
-                    </div>
+                    </div>}
                     <span style={{ border: "solid", borderWidth: "1px 0 0 0", borderColor: "#52525c", margin: "4px 0" }}></span>
                     {/* {!fake && (<Fragment>
                         <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p>
@@ -163,12 +135,15 @@ class BoardCard extends Component {
                         disabled={this.state.loading}
                         title={this.state.used ? "Board used" : "Board not used"}
                     >
-                        <div className="flex items-center pb-2 px-4 bg-gray-700 group-disabled:bg-gray-900 text-white transition-colors duration-150">
-                            Board Used
+                        <div className="bg-gray-700 group-disabled:bg-gray-900 transition-colors duration-150">
+                            <div className={`flex items-center pb-2 px-4 
+                            ${this.state.used ? 'text-red-500' : 'bg-gradient-to-r from-green-700 via-green-500 to-green-700 bg-clip-text text-transparent animate-gradient bg-[length:300%_300%]'}`}>
+                                {this.state.used ? "Board Used" : "Board Available"}
+                            </div>
                         </div>
 
                         <div className="flex items-center justify-center w-[48px] min-h-full bg-gray-800">
-                            {this.state.used ?
+                            {!this.state.used ?
                                 <svg width="24" height="24" viewBox="0 0 10 10" fill="none">
                                     <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg> :
