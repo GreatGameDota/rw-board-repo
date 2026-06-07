@@ -113,6 +113,9 @@ class BoardCard extends Component {
                             title={`${CHARACTER_TO_NAME.get(displayBoardString.split(";")[0])} board`} />
                         <p className="mb-2" style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>{CHARACTER_TO_NAME.get(displayBoardString.split(";")[0])} board</p>
                     </div>}
+                    {!fake && <p className="mb-2" style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>
+                        Starting shelter: {displayBoardString.split(";").length === 3 ? displayBoardString.split(";")[1] : displayBoardString.split(";")[2]}
+                    </p>}
                     <span style={{ border: "solid", borderWidth: "1px 0 0 0", borderColor: "#52525c", margin: "4px 0" }}></span>
                     {/* {!fake && (<Fragment>
                         <p style={{ fontFamily: "RainWorldRodondo", fontSize: "32px" }}>Playtesters:</p>
