@@ -17,11 +17,11 @@ function App() {
             <div className="flex flex-col min-h-screen bg-gray-950 text-white">
                 <MenuBar />
                 <Routes>
-                    <Route path="/bingo-board-repo" element={<Viewer />} />
-                    <Route path="/bingo-board-repo/user/:userName" element={<UserGamesRoute />} />
-                    <Route path="/bingo-board-repo/fake-boards" element={<FakeBoards />} />
-                    {/* <Route path="/bingo-board-repo/add-board" element={<AddBoard />} /> */}
-                    <Route path="/bingo-board-repo/board-search" element={<BoardSearch />} />
+                    <Route path="/rw-board-repo" element={<Viewer />} />
+                    <Route path="/rw-board-repo/user/:userName" element={<UserGamesRoute />} />
+                    <Route path="/rw-board-repo/fake-boards" element={<FakeBoards />} />
+                    {/* <Route path="/rw-board-repo/add-board" element={<AddBoard />} /> */}
+                    <Route path="/rw-board-repo/board-search" element={<BoardSearch />} />
                 </Routes>
                 <Footer />
             </div>

@@ -9,7 +9,7 @@ const MenuBar = () => {
         e.preventDefault();
         const userName = search.trim();
         if (userName) {
-            navigate(`/bingo-board-repo/user/${encodeURIComponent(userName)}`);
+            navigate(`/rw-board-repo/user/${encodeURIComponent(userName)}`);
         }
     };
 
@@ -17,7 +17,7 @@ const MenuBar = () => {
         <nav className="relative bg-gray-900 border-b border-gray-700 shadow-lg">
             <div className="max-w-full mx-auto px-6 py-4">
                 <div className="flex items-center">
-                    <Link to="/bingo-board-repo">
+                    <Link to="/rw-board-repo">
                         <img
                             src="https://firebasestorage.googleapis.com/v0/b/bingo-db-57e75.firebasestorage.app/o/logo%20color%20glow%20shadow.png?alt=media"
                             alt="Bingo Logo"
@@ -27,7 +27,7 @@ const MenuBar = () => {
                     <ul className="hidden md:flex ml-0 md:ml-12 space-x-8 items-center">
                         <li>
                             <Link
-                                to="/bingo-board-repo"
+                                to="/rw-board-repo"
                                 className="text-gray-300 hover:text-white transition-colors duration-200"
                             >
                                 All Boards
@@ -35,7 +35,7 @@ const MenuBar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/bingo-board-repo/board-search"
+                                to="/rw-board-repo/board-search"
                                 className="text-gray-300 hover:text-white transition-colors duration-200"
                             >
                                 Board Search
@@ -43,7 +43,7 @@ const MenuBar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/bingo-board-repo/fake-boards"
+                                to="/rw-board-repo/fake-boards"
                                 className="text-gray-300 hover:text-white transition-colors duration-200"
                             >
                                 Fake Boards
@@ -51,7 +51,7 @@ const MenuBar = () => {
                         </li>
                         {/* <li>
                             <Link
-                                to="/bingo-board-repo/add-board"
+                                to="/rw-board-repo/add-board"
                                 className="text-gray-300 hover:text-white transition-colors duration-200"
                             >
                                 Add Board

@@ -2,7 +2,7 @@
   "name": "board-repo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://greatgamedota.github.io/bingo-board-repo",
+  "homepage": "http://greatgamedota.github.io/rw-board-repo",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
