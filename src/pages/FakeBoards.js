@@ -62,6 +62,17 @@ class FakeBoards extends Component {
                         createdAt: { timestampValue: new Date().toISOString() },
                     }
                 },
+                {
+                    info: {
+                        id: { stringValue: '5' },
+                        title: { stringValue: 'Red Lizard Friends' },
+                        boardString: { stringValue: "Saint;1;random;WatcherBingoNoRegionChallenge~System.String|WARA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARB|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARC|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARD|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARE|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARF|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WARG|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WAUA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WBLA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WMPA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WORA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WPGA|Region|0|regionsreal><0><0bChGBingoTameChallenge~System.Boolean|true|Specific Creature Type|0|NULL><System.String|RedLizard|Creature Type|1|friend><0><System.Int32|10|Amount|2|NULL><0><0><><bChGWatcherBingoNoRegionChallenge~System.String|WPTA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WRFA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WRFB|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WRRA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WSKA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WSKB|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WSKC|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WSKD|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WSSR|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WTDA|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WTDB|Region|0|regionsreal><0><0bChGWatcherBingoNoRegionChallenge~System.String|WVWA|Region|0|regionsreal><0><0" },
+                        author: { stringValue: 'Pid' },
+                        playtesters: { arrayValue: { values: [{ stringValue: 'Pid' }] } },
+                        used: { booleanValue: false },
+                        createdAt: { timestampValue: new Date().toISOString() },
+                    }
+                },
             ],
             loaded: false,
         };
