@@ -93,7 +93,7 @@ class BoardSearch extends Component {
     fetchBoards = async () => {
         this.setState({ loading: true, error: null });
         try {
-            const response = await fetch('https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards');
+            const response = await fetch('https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards?min=0&max=1000');
             if (!response.ok) {
                 throw new Error(`API error: ${response.status}`);
             }

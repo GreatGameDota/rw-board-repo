@@ -80,7 +80,7 @@ class Viewer extends Component {
         const min = page * 10;
         const max = min + 10;
         try {
-            const response = await fetch(`https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards`);
+            const response = await fetch(`https://us-central1-bingo-db-57e75.cloudfunctions.net/api/boards?min=0&max=1000`);
             if (!response.ok) {
                 throw new Error(`API error: ${response.status}`);
             }
